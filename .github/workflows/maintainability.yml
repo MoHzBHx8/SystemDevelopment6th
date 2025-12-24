@@ -1,0 +1,25 @@
+name: 3. Maintainability Audit (Radon)
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install Radon
+        run: pip install radon
+
+      - name: Check Code Complexity
+        # -cc checks cyclomatic complexity
+        # -n B means the build fails if the code grade is worse than a 'B'
+        run: radon cc app/ -s -n B
