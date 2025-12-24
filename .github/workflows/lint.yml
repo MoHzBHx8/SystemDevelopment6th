@@ -24,10 +24,6 @@ jobs:
       - name: Install Ruff
         run: pip install ruff
 
-#      - name: Run Ruff Check
-#        # This scans the app and tests folders for style errors
-#        run: ruff check app/ tests/
-
       - name: Run linter check
         run: ruff check --fix app/ tests/
 

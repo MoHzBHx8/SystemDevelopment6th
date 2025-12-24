@@ -19,3 +19,19 @@ def create_expense(expense: schemas.ExpenseCreate, db: Session = Depends(databas
 @app.get("/expenses/", response_model=List[schemas.Expense])
 def read_expenses(db: Session = Depends(database.get_db)):
     return db.query(models.Expense).all()
+
+def complex_function(x):
+    if x > 0:
+        if x < 10:
+            if x == 1:
+                return "one"
+            elif x == 2:
+                return "two"
+            else:
+                return "small"
+        else:
+            if x < 20:
+                return "medium"
+            else:
+                return "large"
+    return "zero"
