@@ -22,4 +22,8 @@ jobs:
       - name: Check Code Complexity
         # The -nb flag tells radon to exit with a non-zero status
         # (Fail the build) if any block is worse than B.
-        run: radon cc app/ -s -n B
+        run: |
+          if radon cc app/ -nc | grep -E " [CDEF]$"; then
+            echo "Cyclomatic complexity too high"
+            exit 1
+          fi
