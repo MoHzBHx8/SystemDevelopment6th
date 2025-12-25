@@ -20,6 +20,6 @@ jobs:
         run: pip install radon
 
       - name: Check Code Complexity
-        # -cc checks cyclomatic complexity
-        # -n B means the build fails if the code grade is worse than a 'B'
-        run: radon cc app/ -s -n B
+        # The -nb flag tells radon to exit with a non-zero status
+        # (Fail the build) if any block is worse than B.
+        run: radon cc app/ -s -nb B
