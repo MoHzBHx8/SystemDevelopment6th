@@ -20,26 +20,18 @@ def create_expense(expense: schemas.ExpenseCreate, db: Session = Depends(databas
 def read_expenses(db: Session = Depends(database.get_db)):
     return db.query(models.Expense).all()
 
-def monster_function(a, b, c, d, e):
-    # This nested mess significantly increases "Cyclomatic Complexity"
-    if a:
-        if b:
-            if c:
-                return 1
-            elif d:
-                return 2
+def complex_function(x):
+    if x > 0:
+        if x < 10:
+            if x == 1:
+                return "one"
+            elif x == 2:
+                return "two"
             else:
-                for i in range(10):
-                    if i > e:
-                        return 3
+                return "small"
         else:
-            if d:
-                return 4
-            while e < 10:
-                e += 1
-                if e == 5:
-                    return 5
-    elif b:
-        if c:
-            return 6
-    return 7
+            if x < 20:
+                return "medium"
+            else:
+                return "large"
+    return "zero"
