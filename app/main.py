@@ -25,26 +25,26 @@ def read_expenses(db: Session = Depends(database.get_db)):
     return db.query(models.Expense).all()
 
 
-def monster_function(a, b, c, d, e):
-    # This nested mess significantly increases "Cyclomatic Complexity"
-    if a:
-        if b:
-            if c:
-                return 1
-            elif d:
-                return 2
-            else:
-                for i in range(10):
-                    if i > e:
-                        return 3
-        else:
-            if d:
-                return 4
-            while e < 10:
-                e += 1
-                if e == 5:
-                    return 5
-    elif b:
-        if c:
-            return 6
-    return 7
+# def monster_function(a, b, c, d, e):
+#     # This nested mess significantly increases "Cyclomatic Complexity"
+#     if a:
+#         if b:
+#             if c:
+#                 return 1
+#             elif d:
+#                 return 2
+#             else:
+#                 for i in range(10):
+#                     if i > e:
+#                         return 3
+#         else:
+#             if d:
+#                 return 4
+#             while e < 10:
+#                 e += 1
+#                 if e == 5:
+#                     return 5
+#     elif b:
+#         if c:
+#             return 6
+#     return 7
