@@ -25,7 +25,9 @@ def read_expenses(db: Session = Depends(database.get_db)):
     return db.query(models.Expense).all()
 
 
-def calculate_complex_tax_and_discount(amount: float, category: str, user_type: str, region: str, is_holiday: bool):
+def calculate_complex_tax_and_discount(
+    amount: float, category: str, user_type: str, region: str, is_holiday: bool
+):
     """
     A monster function with high cyclomatic complexity (Grade C or D).
     Intended to trigger a Radon CI failure.
@@ -46,9 +48,9 @@ def calculate_complex_tax_and_discount(amount: float, category: str, user_type: 
         else:
             if region == "EU":
                 if category == "FOOD":
-                    final_amount += (amount * 0.05)  # Low tax
+                    final_amount += amount * 0.05  # Low tax
                 else:
-                    final_amount += (amount * 0.20)  # High tax
+                    final_amount += amount * 0.20  # High tax
             elif region == "US":
                 if amount > 1000:
                     for i in range(3):  # Arbitrary nested loop logic
@@ -59,7 +61,7 @@ def calculate_complex_tax_and_discount(amount: float, category: str, user_type: 
                 else:
                     final_amount += 10
             else:
-                final_amount += (amount * 0.15)
+                final_amount += amount * 0.15
     else:
         return 0
 
